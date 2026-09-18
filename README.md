@@ -1,4 +1,4 @@
-# Andiamo Pizza — Crosnes
+# Andiamo Pizza — Crosne
 
 Projet de refonte du site de la pizzeria : catalogue, photographies de présentation, offres, panier local et interface responsive.
 
