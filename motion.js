@@ -20,13 +20,9 @@
         reveal(entry.target);
       });
     }, {threshold: 0.08});
-    document.querySelectorAll('.hero-copy > *, .offers-intro, .deal-card, .section-heading, .promise-photo, .promise-copy, .practical-cards article').forEach(element => observer.observe(element));
-    const grid = document.querySelector('.product-grid');
-    grid.querySelectorAll('.product-card').forEach(element => observer.observe(element));
-    new MutationObserver(records => records.forEach(record => {
-      record.removedNodes.forEach(node => {if (node.nodeType === 1) observer.unobserve(node)});
-      record.addedNodes.forEach(node => {if (node.nodeType === 1 && node.matches('.product-card')) observer.observe(node)});
-    })).observe(grid, {childList: true});
+    // Photos/cards stay opaque: revealing an already painted lazy-loaded card
+    // from opacity zero made it disappear briefly while scrolling.
+    document.querySelectorAll('.hero-copy > *, .offers-intro, .deal-card, .section-heading, .promise-copy, .practical-cards article').forEach(element => observer.observe(element));
   }
 
   // Pulse only after the quantity actually increases, not when options open.

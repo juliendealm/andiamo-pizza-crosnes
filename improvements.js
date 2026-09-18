@@ -8,7 +8,21 @@ normalize=function(raw){return originalNormalize(raw).map(p=>({...p,rawName:p.na
 productImage=p=>{const slug=imageSlug(p.rawName||p.name);const replacements={'pizza-calzone-soufflee':'pizza-calzone-coupee',badoit:'badoit-bouteille','pasta-alfredo':'pasta-alfredo-v2'};return `assets/products/${replacements[slug]||slug}.webp`};
 applyFilters=function(){const q=fold(document.querySelector('#search').value.trim());filtered=products.filter(p=>q?fold(p.name+' '+p.description).includes(q):activeCategory==='Tous'||p.category===activeCategory);visible=12;renderProducts()};
 const originalRenderProducts=renderProducts;
-renderProducts=function(){originalRenderProducts();document.querySelectorAll('.product-card').forEach(card=>{
+function prepareProductImage(img,index){
+ const frame=document.createElement('div');
+ frame.className='product-image-frame';
+ img.replaceWith(frame);frame.append(img);
+ img.decoding='async';
+ if(index<4)img.loading='eager';
+ const ready=async()=>{
+  try{await img.decode()}catch{/* The existing fallback still handles load errors. */}
+  if(img.naturalWidth&&img.isConnected)frame.classList.add('image-ready');
+ };
+ img.addEventListener('load',ready);
+ if(img.complete&&img.naturalWidth)ready();
+}
+renderProducts=function(){originalRenderProducts();document.querySelectorAll('.product-card').forEach((card,index)=>{
+ prepareProductImage(card.querySelector('.product-image'),index);
  const p=products.find(x=>x.id===card.dataset.id);
  if(p.description==='Une recette généreuse préparée à la commande.')card.querySelector('.product-description').remove();
  if(p.category==='Tacos'||/^Menu (Promo|Andiamo)$/i.test(p.name)){card.querySelector('.add-button').classList.add('configure-button');card.querySelector('.add-button').textContent='Choisir';card.querySelector('.add-button').setAttribute('aria-label','Composer '+p.name)}
