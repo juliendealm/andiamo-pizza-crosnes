@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Andiamo Pizza Crosnes — pizzas, burgers et recettes généreuses en livraison ou à emporter." />
+  <title>Andiamo Pizza — Crosnes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="refinements.css?v=5" />
+</head>
+<body>
+  <div class="announcement">À emporter : <strong>1 pizza achetée = la 2<sup>e</sup> offerte</strong> <a href="#offre">Découvrir l’offre →</a></div>
+  <header class="site-header">
+    <a class="brand" href="#accueil" aria-label="Andiamo Pizza, accueil"><span>ANDIAMO</span><small>PIZZA · CROSNES</small></a>
+    <nav aria-label="Navigation principale">
+      <a href="#carte">La carte</a><a href="#offre">Nos offres</a><a href="#livraison">Livraison</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions"><a class="phone" href="tel:0169495959">01 69 49 59 59</a><button class="cart-trigger" type="button" aria-label="Ouvrir le panier">Panier <span class="cart-count">0</span></button></div>
+    <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="hero-copy">
+        <span class="eyebrow"><i></i> Pizzas, burgers & recettes généreuses</span>
+        <h1>La pizza de<br><em>Crosnes.</em></h1>
+        <p>Des produits gourmands préparés à la commande, à savourer chez vous ou à venir chercher sur place.</p>
+        <div class="hero-actions"><a class="button primary" href="#carte">Voir la carte</a><a class="button secondary" href="tel:0169495959">Appeler</a></div>
+        <div class="service-pills"><span>Service 7j/7 · midi et soir</span><span>Livraison aux alentours</span></div>
+      </div>
+      <div class="hero-visual"><img src="assets/hero-pizza.webp" alt="Pizza fraîchement préparée avec mozzarella, tomates et basilic" /><span class="hand-note">Préparée pour vous<br>avec générosité</span></div>
+    </section>
+
+    <section class="offer-section" id="offre">
+      <div class="offers-intro"><span class="eyebrow">À partager, à savourer</span><h2>Plus de pizzas.<br>Plus de bonnes affaires.</h2></div>
+      <div class="offers-grid">
+        <article class="deal-card deal-pickup"><span class="deal-label">Exclusivement à emporter</span><h3>1 pizza achetée,<br>la 2<sup>e</sup> offerte.</h3><p>Le bon plan pour votre prochain duo de pizzas.</p><a class="button" data-offer="pickup" href="#carte">Choisir mes pizzas <span aria-hidden="true">→</span></a><small>Conditions confirmées lors de votre appel.</small></article>
+        <article class="deal-card"><div class="deal-top"><span class="deal-label">Menu Andiamo</span><strong class="deal-price">25 <small>€</small></strong></div><h3>3 pizzas Junior</h3><p>+ 1 Coca-Cola 1,5 L inclus</p><a class="button" data-promo="Menu Andiamo" href="#carte">Composer mon menu <span aria-hidden="true">→</span></a></article>
+        <article class="deal-card"><div class="deal-top"><span class="deal-label">Menu Promo</span><strong class="deal-price">35 <small>€</small></strong></div><h3>3 pizzas Senior</h3><p>+ 1 Coca-Cola 1,5 L inclus</p><a class="button" data-promo="Menu Promo" href="#carte">Composer mon menu <span aria-hidden="true">→</span></a></article>
+      </div>
+    </section>
+
+    <section class="menu-section" id="carte">
+      <div class="section-heading"><div><span class="eyebrow"><i></i> Notre carte</span><h2>Choisissez votre pizza.</h2></div><p>Les classiques d’abord. Choisissez votre taille, puis complétez votre repas.</p></div>
+      <div class="category-bar" role="tablist" aria-label="Catégories"></div>
+      <div class="catalog-tools"><label class="search"><span>⌕</span><input id="search" type="search" aria-label="Rechercher dans toute la carte" placeholder="Un produit, une recette, un ingrédient…" /></label><span id="result-count"></span></div>
+      <div class="product-grid" aria-live="polite"></div>
+      <button class="load-more" type="button">Afficher plus de produits</button>
+    </section>
+
+    <section class="promise-section">
+      <div class="promise-photo"><img src="assets/products/pizza-reine.webp?v=2" alt="Pizza Reine : tomate, fromage, jambon et champignons" loading="lazy" /></div>
+      <div class="promise-copy"><span class="eyebrow"><i></i> Simplement gourmand</span><h2>Des recettes qui donnent vraiment faim.</h2><p>Une pâte dorée, des garnitures généreuses et des produits préparés au moment de votre commande.</p><div class="promise-list"><article><b>01</b><span><strong>Préparé à la commande</strong><small>Pour une fraîcheur maximale</small></span></article><article><b>02</b><span><strong>Trois tailles pour chaque faim</strong><small>Junior, Senior ou Méga</small></span></article><article><b>03</b><span><strong>À emporter ou livré</strong><small>À vous de choisir</small></span></article></div></div>
+    </section>
+
+    <section class="practical" id="livraison">
+      <div><span class="eyebrow light">Informations pratiques</span><h2>On s’occupe<br>de votre repas.</h2><p>Préparez votre panier, puis confirmez votre commande par téléphone. Pour une livraison, nous vous préciserons la zone desservie, les frais, le minimum et le délai.</p></div>
+      <div class="practical-cards"><article><span>⌖</span><h3>Nous trouver</h3><p>29 avenue Jean Jaurès<br>91560 Crosnes</p><a href="https://maps.google.com/?q=29+Avenue+Jean+Jaurès+91560+Crosnes" target="_blank" rel="noreferrer">Voir l’itinéraire →</a></article><article><span>◷</span><h3>Nos horaires</h3><p>Tous les jours<br>11h–14h30 · 18h–22h30<br>Week-end jusqu’à 23h</p></article><article><span>☎</span><h3>Une question ?</h3><p>Appelez-nous directement.<br>Nous vous répondons avec plaisir.</p><a href="tel:0169495959">01 69 49 59 59 →</a></article></div>
+    </section>
+  </main>
+
+  <footer id="contact"><a class="brand inverse" href="#accueil"><span>ANDIAMO</span><small>PIZZA · CROSNES</small></a><p>La pizza de Crosnes, généreuse et préparée pour vous.</p><div><a href="#carte">La carte</a><a href="#offre">L’offre</a><a href="#livraison">Informations</a><a href="tel:0169495959">Nous appeler</a></div><small>© Andiamo Pizza</small></footer>
+
+  <aside class="cart-drawer" role="dialog" aria-modal="true" aria-label="Votre panier" aria-hidden="true"><div class="cart-head"><div><span class="eyebrow"><i></i> Votre commande</span><h2>Mon panier</h2></div><button class="cart-close" aria-label="Fermer">×</button></div><div class="order-mode"><button data-mode="pickup" class="active">À emporter</button><button data-mode="delivery">Livraison</button></div><div class="promo-status">✓ L’offre 1 achetée = 1 offerte sera appliquée</div><div class="cart-items"></div><div class="cart-summary"><div><span>Sous-total</span><b id="subtotal">0,00 €</b></div><div class="discount-row"><span>Offre à emporter</span><b id="discount">− 0,00 €</b></div><div class="total-row"><span>Total</span><b id="total">0,00 €</b></div><button class="checkout-button" disabled>Commander maintenant</button><small>Le paiement et la validation finale seront configurés avec la pizzeria.</small></div></aside>
+  <div class="overlay"></div>
+  <div class="toast" role="status"></div>
+  <dialog id="product-dialog"><button class="dialog-close" aria-label="Fermer les options">×</button><div id="product-dialog-body"></div></dialog>
+  <dialog id="checkout-dialog"><button class="dialog-close" aria-label="Fermer le récapitulatif">×</button><div id="checkout-body"></div></dialog>
+  <script src="app.js?v=4"></script>
+  <script src="improvements.js?v=7"></script>
+  <script src="motion.js?v=1"></script>
+</body>
+</html>
