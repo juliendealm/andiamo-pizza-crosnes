@@ -6,5 +6,19 @@
 .cart-row>.price{flex-shrink:0}
 dialog{overscroll-behavior:contain;scrollbar-gutter:stable}
 .field select{min-height:48px;line-height:1.4}
+/* Formules : une rangée tactile, avec un aperçu de la carte suivante. */
+.menus{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/3.15);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:4px;padding:4px 4px 16px;gap:16px;scrollbar-width:thin;scrollbar-color:var(--gold) var(--panel)}
+.menus .menu-card,.menus .menu-card:first-child{grid-row:auto;grid-column:auto;min-width:0;scroll-snap-align:start;justify-content:flex-start;min-height:330px}
+.menus .menu-card .price,.menus .menu-card:first-child .price{font-size:44px}
+.menus .menu-card p{flex:1}
+.menus .menu-card .pill{flex:none}
+.menu-heading{align-items:center}
+.menu-heading>div:first-child>span{display:block;margin-top:6px}
+.carousel-controls{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.carousel-controls #menus-position{font-size:12px;font-variant-numeric:tabular-nums;min-width:62px;text-align:center;margin-right:6px}
+.carousel-controls .circle{color:var(--gold)}
+.carousel-controls .circle:disabled{opacity:.3}
+@media(max-width:1000px){.menus{grid-auto-columns:calc((100% - 32px)/2.15)}}
+@media(max-width:600px){.menus{grid-auto-columns:86%;gap:12px}.menus .menu-card,.menus .menu-card:first-child{min-height:310px}.menu-heading{flex-direction:row;align-items:center;gap:12px}.menu-heading h3{font-size:28px}.menu-heading>div:first-child>span{font-size:12px;max-width:180px}.carousel-controls{gap:6px}.carousel-controls #menus-position{display:none}}
 @media(max-width:380px){.hero h1{font-size:54px}.hero-content{padding-inline:16px}.actions{flex-direction:column}.actions .pill{width:100%;font-size:14px}.brand{font-size:32px}header{padding-inline:12px;gap:8px}.header-buttons .pill{padding-inline:10px}.cart-row .price{font-size:23px}.section-head h2{font-size:42px}}
 @media(max-width:600px){dialog{padding-bottom:max(26px,env(safe-area-inset-bottom))}.product:focus{outline-offset:2px}}

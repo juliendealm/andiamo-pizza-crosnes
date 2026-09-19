@@ -54,3 +54,31 @@ document.addEventListener('click',e=>{
 document.addEventListener('keydown',e=>{if(e.key==='Escape')menu(false)});
 $('#search').addEventListener('input',()=>{active='Tous';limit=12;tabs();render()});$('#more').addEventListener('click',()=>{const start=$('#products').children.length;limit+=12;render(true);const first=$('#products').children[start];if(first){first.tabIndex=-1;first.focus({preventScroll:true})}});
 tabs();renderMenus();render();renderCart();
+
+// Native scrolling preserves touch gestures, keyboard access and reduced motion.
+(() => {
+ const track=$('#menus'),prev=$('#menus-prev'),next=$('#menus-next');
+ const cards=[...track.children];
+ cards.forEach((card,i)=>{card.setAttribute('role','group');card.setAttribute('aria-roledescription','diapositive');card.setAttribute('aria-label',`${i+1} sur ${cards.length}`)});
+ function update(){
+  const max=track.scrollWidth-track.clientWidth;
+  prev.disabled=track.scrollLeft<=2;next.disabled=track.scrollLeft>=max-2;
+  const box=track.getBoundingClientRect();
+  const visible=cards.map((c,i)=>({i,r:c.getBoundingClientRect()})).filter(({r})=>Math.min(r.right,box.right)-Math.max(r.left,box.left)>r.width*.5);
+  if(visible.length){const first=visible[0].i+1,last=visible.at(-1).i+1;$('#menus-position').textContent=(first===last?first:`${first}–${last}`)+' / '+cards.length;}
+ }
+ const behavior=()=>matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
+ function move(direction){
+  const step=cards.length>1?cards[1].offsetLeft-cards[0].offsetLeft:track.clientWidth;
+  track.scrollBy({left:direction*step,behavior:behavior()});
+ }
+ prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
+ track.addEventListener('keydown',e=>{
+  if(e.target!==track)return;
+  if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();move(e.key==='ArrowRight'?1:-1)}
+  if(e.key==='Home'||e.key==='End'){e.preventDefault();track.scrollTo({left:e.key==='Home'?0:track.scrollWidth,behavior:behavior()})}
+ });
+ let timer;track.addEventListener('scroll',()=>{clearTimeout(timer);timer=setTimeout(update,120)},{passive:true});
+ if('ResizeObserver' in window)new ResizeObserver(update).observe(track);else window.addEventListener('resize',update);
+ update();
+})();
