@@ -19,6 +19,15 @@ dialog{overscroll-behavior:contain;scrollbar-gutter:stable}
 .carousel-controls .circle{color:var(--gold)}
 .carousel-controls .circle:disabled{opacity:.3}
 .menus:focus-visible{outline:none;box-shadow:0 2px 0 var(--gold)}
+.menus .menu-card{padding:0;overflow:hidden}
+.menu-photo{position:relative;aspect-ratio:1;flex:none;background:#bda887}
+.menu-photo-caption{position:absolute;bottom:10px;left:12px;padding:4px 8px;border-radius:999px;background:#181715b8;color:#fff;font-size:10px;line-height:1.4}
+.menu-card-body{display:flex;flex-direction:column;flex:1;padding:22px;gap:0}
+.menu-card-title{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px;margin-top:12px}
+.menu-card-title h3{margin:0;font-size:30px}
+.menus .menu-card .price{font-size:36px}
+.menus .menu-card p{margin:14px 0 22px;line-height:1.6}
+.menu-card-body .pill{width:100%}
 @media(max-width:1000px){.menus{grid-auto-columns:calc((100% - 32px)/2.15)}}
 @media(max-width:600px){.menus{grid-auto-columns:86%;gap:12px}.menus .menu-card,.menus .menu-card:first-child{min-height:310px}.menu-heading{flex-direction:row;align-items:center;gap:12px}.menu-heading h3{font-size:28px}.menu-heading>div:first-child>span{font-size:12px;max-width:180px}.carousel-controls{gap:6px}.carousel-controls #menus-position{display:none}}
 @media(max-width:380px){.hero h1{font-size:54px}.hero-content{padding-inline:16px}.actions{flex-direction:column}.actions .pill{width:100%;font-size:14px}.brand{font-size:32px}header{padding-inline:12px;gap:8px}.header-buttons .pill{padding-inline:10px}.cart-row .price{font-size:23px}.section-head h2{font-size:42px}}

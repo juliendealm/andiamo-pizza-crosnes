@@ -6,6 +6,7 @@ const products=vm.runInContext('catalog',context);
 assert.equal(new Set(products.map(p=>p.id)).size,products.length);
 assert.equal(products.filter(p=>p.category==='Pizzas').length,41);
 assert.equal(products.filter(p=>p.category==='Menus').length,7);
+assert(products.filter(p=>p.category==='Menus').every(p=>p.image),'Chaque formule doit avoir un visuel');
 for(const p of products){for(const n of Object.values(p.prices))assert(n>0);if(p.image)assert(fs.existsSync(path.resolve(__dirname,p.image)),p.image)}
 const app=fs.readFileSync(path.join(__dirname,'app.js'),'utf8');
 vm.runInContext(app.slice(app.indexOf('function discountFor('),app.indexOf('function renderCart(')),context);

@@ -17,7 +17,8 @@ const menus=[
  ['Kids Cheese',7.5,'1 cheeseburger + frites + Capri-Sun.','Pour les petits',0,'','kids-cheese'],
  ['Kids Nuggets',7.5,'5 nuggets + frites + Capri-Sun.','Pour les petits',0,'','kids-nuggets']
 ];
-for(const [n,p,d,label,count,size,code] of menus)item('Menu '+n,'Menus',d,{Menu:p},'',{label,count,size,code});
+const menuImages={midi:'assets/formules/midi.webp',solo:'assets/formules/solo.webp',duo:'assets/formules/duo.webp',andiamo:'../assets/products/menu-andiamo.webp',promo:'../assets/products/menu-promo.webp','kids-cheese':'../assets/products/menu-enfant-cheese.webp','kids-nuggets':'../assets/products/menu-enfant-nuggets.webp'};
+for(const [n,p,d,label,count,size,code] of menus)item('Menu '+n,'Menus',d,{Menu:p},'',{label,count,size,code,image:menuImages[code]});
 for(const [n,p,d,img] of [
  ['Montagnard',10,'Steak maison, salade, tomates, lardons, oignons, raclette, emmental, sauce maison','burger-montagnard'],
  ['Double bacon',11.5,'2 steaks maison, salade, tomates, bacon, oignons, cheddar, sauce maison','burger-double-bacon'],
